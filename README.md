@@ -95,7 +95,9 @@ journalctl -u quarrychaind -f
 
 ## 5. Wait for the sync
 
-The node replays the chain from block 1.
+The node replays the chain from block 1. Expect several hours: about
+1,400 blocks a minute on an 8-vCPU machine (tested 2026-11-27), so roughly
+7 hours at the current height of ~590,000; longer on smaller servers.
 
 ```bash
 curl -s localhost:26657/status | jq '.result.sync_info | {latest_block_height, catching_up}'
